@@ -8,16 +8,20 @@ Created on Fri Jun 14 23:27:58 2024
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
+import os
 
+# Define the base directory for the saved models
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, 'saved_models')
 
-# loading the saved models
+# Load the saved models
+diabetes_model_path = os.path.join(MODELS_DIR, 'diabetes_model.sav')
+heart_disease_model_path = os.path.join(MODELS_DIR, 'heart_disease_model.sav')
+parkinsons_model_path = os.path.join(MODELS_DIR, 'parkinsons_model.sav')
 
-diabetes_model = pickle.load(open('C:/Users/User/OneDrive/Documents/machine learning/health web app/saved models/diabetes_model.sav', 'rb'))
-
-heart_disease_model = pickle.load(open('C:/Users/User/OneDrive/Documents/machine learning/health web app/saved models/heart_disease_model.sav', 'rb'))
-
-parkinsons_model = pickle.load(open('C:/Users/User/OneDrive/Documents/machine learning/health web app/saved models/parkinsons_model.sav', 'rb'))
-
+diabetes_model = pickle.load(open(diabetes_model_path, 'rb'))
+heart_disease_model = pickle.load(open(heart_disease_model_path, 'rb'))
+parkinsons_model = pickle.load(open(parkinsons_model_path, 'rb'))
 
 # sidebar for navigation
 
