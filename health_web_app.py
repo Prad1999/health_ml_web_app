@@ -10,18 +10,22 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import os
 
-# Define the base directory for the saved models
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODELS_DIR = os.path.join(BASE_DIR, 'saved_models')
+# Set page configuration
+st.set_page_config(page_title="Health Assistant",
+                   layout="wide",
+                   page_icon="🧑‍⚕️")
 
-# Load the saved models
-diabetes_model_path = os.path.join(MODELS_DIR, 'diabetes_model.sav')
-heart_disease_model_path = os.path.join(MODELS_DIR, 'heart_disease_model.sav')
-parkinsons_model_path = os.path.join(MODELS_DIR, 'parkinsons_model.sav')
+    
+# getting the working directory of the main.py
+working_dir = os.path.dirname(os.path.abspath(__file__))
 
-diabetes_model = pickle.load(open(diabetes_model_path, 'rb'))
-heart_disease_model = pickle.load(open(heart_disease_model_path, 'rb'))
-parkinsons_model = pickle.load(open(parkinsons_model_path, 'rb'))
+# loading the saved models
+
+diabetes_model = pickle.load(open(f'{working_dir}/saved_models/diabetes_model.sav', 'rb'))
+
+heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
+
+parkinsons_model = pickle.load(open(f'{working_dir}/saved_models/parkinsons_model.sav', 'rb'))
 
 # sidebar for navigation
 
